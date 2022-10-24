@@ -9,6 +9,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
+    @Column(name = "firstName")
     private String fname;
     private String lname;
     private String email;

@@ -14,7 +14,7 @@ public class UserDaoImplimentation implements UserDao {
 
     public UserDaoImplimentation() {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("First");
-       entityManager = entityManagerFactory.createEntityManager();
+        entityManager = entityManagerFactory.createEntityManager();
     }
 
     @Override

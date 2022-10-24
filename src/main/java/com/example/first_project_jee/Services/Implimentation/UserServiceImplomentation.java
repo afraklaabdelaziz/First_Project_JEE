@@ -1,6 +1,7 @@
 package com.example.first_project_jee.Services.Implimentation;
 
 import com.example.first_project_jee.Entities.User;
+import com.example.first_project_jee.Repository.Implimentation.UserRepositoryImplimentation;
 import com.example.first_project_jee.Services.UserService;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -9,6 +10,7 @@ import jakarta.persistence.Persistence;
 import java.util.List;
 
 public class UserServiceImplomentation implements UserService {
+    private UserRepositoryImplimentation userRepo = new UserRepositoryImplimentation();
 
     private EntityManager entityManager;
 
@@ -19,14 +21,7 @@ public class UserServiceImplomentation implements UserService {
 
     @Override
     public void register(User user) {
-        entityManager.getTransaction().begin();
-        try {
-            entityManager.persist(user);
-            entityManager.getTransaction().commit();
-        }catch (Exception e){
-            entityManager.getTransaction().rollback();
-            e.printStackTrace();
-        }
+     userRepo.add(user);
     }
 
     @Override
