@@ -11,6 +11,8 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Connect avec success</h1>
+<h1>jkdsgjh</h1>
+
+<h1>Bien venu : ${sessionScope.fname} ${sessionScope.lname}</h1>
 </body>
 </html>

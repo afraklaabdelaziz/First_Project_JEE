@@ -14,7 +14,7 @@
         <!-- If the error attribute is present in the forwarded request, display it -->
         <h3 class="bg-red-300 text-red-900 font-semibold text-xl w-80 rounded-lg my-2 mx-auto"></h3>
         <div>
-            <form action="#" method="post">
+            <form method="post">
 
                 <div class="grid grid-cols-2 gap-4 my-5 mx-8">
 

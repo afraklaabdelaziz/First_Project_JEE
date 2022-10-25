@@ -2,7 +2,6 @@ package com.example.first_project_jee.Entities;
 
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.Generated;
 
 import java.io.Serializable;
 
