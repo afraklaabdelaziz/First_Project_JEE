@@ -52,15 +52,8 @@ public class UserDaoImplimentation implements UserDao {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("First");
         entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
-        Query query = null ;
-        try {
-             query = entityManager.createQuery("select users from User users ");
-                entityManager.getTransaction().commit();
-        }catch (Exception e){
-            entityManager.getTransaction().rollback();
-        } finally {
-            entityManager.close();
-        }
+        Query query = entityManager.createQuery("select users from User users ");
+        entityManager.getTransaction().commit();
         return query.getResultList();
     }
 }

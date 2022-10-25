@@ -17,9 +17,7 @@ public class UserRepositoryImplimentation implements UserRepository {
 
     @Override
     public void add(User user) {
-        System.out.println("3");
         userDao.addUser(user);
-        System.out.println("4");
     }
 
     @Override

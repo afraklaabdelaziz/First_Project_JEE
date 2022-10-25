@@ -24,7 +24,6 @@ public class LoginServlet extends HttpServlet {
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        userService.login(email,password);
         List<User> users = userService.listUser();
         users.forEach(value -> {
             if (value.getEmail().equals(email) && value.getPassword().equals(password)){
