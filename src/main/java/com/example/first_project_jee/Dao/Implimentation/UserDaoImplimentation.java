@@ -10,28 +10,30 @@ import jakarta.persistence.Query;
 import java.util.List;
 
 public class UserDaoImplimentation implements UserDao {
-    private EntityManager entityManager;
-
+   private EntityManager entityManager;
     public UserDaoImplimentation() {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("First");
-        entityManager = entityManagerFactory.createEntityManager();
     }
 
     @Override
     public void addUser(User user) {
-     entityManager.getTransaction().begin();
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("First");
+        entityManager = entityManagerFactory.createEntityManager();
+       entityManager.getTransaction().begin();
      try {
          entityManager.persist(user);
          entityManager.getTransaction().commit();
      }catch (Exception e){
          entityManager.getTransaction().rollback();
          e.printStackTrace();
+     } finally {
+         entityManager.close();
      }
-     entityManager.close();
     }
 
     @Override
     public void deleteUser(Long idUser) {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("First");
+        entityManager = entityManagerFactory.createEntityManager();
      entityManager.getTransaction().begin();
      try {
          User user = entityManager.find(User.class,idUser);
@@ -40,17 +42,25 @@ public class UserDaoImplimentation implements UserDao {
      }catch (Exception e){
          entityManager.getTransaction().rollback();
          e.printStackTrace();
+     } finally {
+         entityManager.close();
      }
-     entityManager.close();
-
     }
 
     @Override
     public List<User> listUser() {
-            Query query = entityManager.createQuery("select users from User users ");
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("First");
+        entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        Query query = null ;
+        try {
+             query = entityManager.createQuery("select users from User users ");
+                entityManager.getTransaction().commit();
+        }catch (Exception e){
+            entityManager.getTransaction().rollback();
+        } finally {
             entityManager.close();
-            return query.getResultList();
-
-
+        }
+        return query.getResultList();
     }
 }

@@ -6,14 +6,25 @@ import com.example.first_project_jee.Repository.UserRepository;
 
 public class UserRepositoryImplimentation implements UserRepository {
     private UserDaoImplimentation userDao = new UserDaoImplimentation();
-    @Override
-    public void add(User user) {
-        userDao.addUser(user);
+
+    public UserDaoImplimentation getUserDao() {
+        return userDao;
+    }
+
+    public void setUserDao(UserDaoImplimentation userDao) {
+        this.userDao = userDao;
     }
 
     @Override
-    public User login(String email, String password) {
-        return null;
+    public void add(User user) {
+        System.out.println("3");
+        userDao.addUser(user);
+        System.out.println("4");
+    }
+
+    @Override
+    public void login(String email, String password) {
+        userDao.listUser();
     }
 
     @Override
@@ -25,4 +36,5 @@ public class UserRepositoryImplimentation implements UserRepository {
     public void delete(Long idUser) {
 
     }
+
 }
