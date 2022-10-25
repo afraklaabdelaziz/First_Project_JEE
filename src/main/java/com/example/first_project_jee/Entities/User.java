@@ -4,9 +4,11 @@ package com.example.first_project_jee.Entities;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Generated;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "user")
-public class User {
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
